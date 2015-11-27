@@ -13,5 +13,9 @@
     "Express"
   ],
   "author": "Mário Melo",
-  "license": "N/A"
+  "license": "N/A",
+  "dependencies": {
+    "coffee-script": "^1.10.0",
+    "express": "^4.13.3"
+  }
 }
