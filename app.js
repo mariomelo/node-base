@@ -1,0 +1,1 @@
+console.log('Primeira aplicação em NodeJS');

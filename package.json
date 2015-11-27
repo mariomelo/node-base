@@ -1,0 +1,17 @@
+{
+  "name": "mean-book",
+  "version": "0.0.1",
+  "description": "A aplicação teste para criar o SOA do Smart",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Node",
+    "Angular",
+    "Mongo",
+    "Express"
+  ],
+  "author": "Mário Melo",
+  "license": "N/A"
+}
