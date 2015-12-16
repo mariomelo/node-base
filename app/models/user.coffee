@@ -23,6 +23,6 @@ UserSchema.pre 'save', (next)->
 
 UserSchema.methods.comparePassword = (password) ->
 	user = this
-	bcrypt.compareSync password, user.password
+	bcrypt.compareSync password, user.password 
 
 module.exports = mongoose.model 'User', UserSchema
