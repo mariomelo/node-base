@@ -1,6 +1,7 @@
 user = require '../models/user'
 jwt = require 'jsonwebtoken'
 config = require '../../config'
+authService = require '../services/auth-service'
 
 module.exports = (app, express) ->
 	apiRouter = express.Router()
@@ -11,29 +12,11 @@ module.exports = (app, express) ->
 
 
 	apiRouter.post '/authenticate', (req, res) ->
-		User.findOne( username: req.body.username ).select('password').exec (error, user) ->
-			throw error if error
-			if !user
-  				res.json
-    				success: false
-    				message: 'Authentication failed. User not found.'
-			else if user
-				validPassword = user.comparePassword(req.body.password)
-				if !validPassword
-    				res.json
-      					success: false
-      					message: 'Authentication failed. Wrong password.'
-  				else
-				    # if user is found and password is right
-				    # create a token
-				    token = jwt.sign(user, config.secret, expiresInMinutes: 1440)
-				    # return the information including token as JSON
-				    res.json
-				      success: true
-				      message: 'Enjoy your token!'
-				      token: token
-					apiRouter.get '/', (req, res) ->
-						res.json message: 'Welcome to our API'
+    message = authService.login(req.body.username, req.body.password)
+    res.json message
+		
+  apiRouter.get '/', (req, res) ->
+    res.json message: 'Bem vindo à nossa API!'
 
 	apiRouter.use (req, res, next) ->
   		console.log 'Somebody just came to our app!'
