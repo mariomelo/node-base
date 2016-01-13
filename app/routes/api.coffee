@@ -2,13 +2,13 @@ authService = require '../services/auth-service'
 
 module.exports = (express, config, jwt) ->
   apiRouter = express.Router()
+  console.log 'Api Router configurado'
 
   apiRouter.post '/auth', (req, res) ->
     authService.login req.body.username, req.body.password, (message)->
       res.json message
     
-  apiRouter.use (req, res, next) ->
-      
+  apiRouter.use (req, res, next) -> 
       token = req.body.token or req.query.token or req.headers['x-access-token']
       
       if token
@@ -26,5 +26,10 @@ module.exports = (express, config, jwt) ->
             success: false
             message: 'Token de identificação não fornecido.'
       return
+
+  apiRouter.get '/teste', (req, res) ->
+    res.json
+      success: true
+      message: 'Você acessou uma sessão segura de nossa API! Seja bem-vindo(a) ' + req.decoded.username
 
   return apiRouter

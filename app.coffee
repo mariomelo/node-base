@@ -22,13 +22,8 @@ app.use morgan 'dev'
 
 mongoose.connect config.database
 
-app.use express.static __dirname + '/public'
-
-apiRoutes = require('./app/routes/api')(express, config, jwt);
+apiRoutes = require('./app/routes/api')(express, config, jwt)
 app.use '/api', apiRoutes
-
-app.get '*', (req, res) ->
-	res.sendFile path.join __dirname + '/public/index.html'
 	
 app.listen config.port
 

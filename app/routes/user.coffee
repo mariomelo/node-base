@@ -1,6 +1,6 @@
  apiRouter.route('/users').post (req, res) ->
-    
-    user = new User
+   
+     user = new User
     
     user.name = req.body.name
     user.username = req.body.username
