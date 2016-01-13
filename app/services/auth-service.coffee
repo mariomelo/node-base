@@ -22,3 +22,11 @@ module.exports =
             callback success: true,
             message: 'Usuário autenticado com sucesso! Token emitido.',
             token: token
+  verify: (token, callback) ->
+    if !token
+      callback message: 'Token de autenticação não enviado.'
+    else jwt.verify token, config.secret, (error, decodedInfo) ->
+      if error
+        callback message: 'Token de autenticação inválido.'
+      else
+        callback null, decodedInfo
