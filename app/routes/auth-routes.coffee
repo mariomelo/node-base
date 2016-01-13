@@ -1,8 +1,7 @@
 authService = require '../services/auth-service'
 
-module.exports = (express, config, jwt) ->
+module.exports = (express) ->
   authRouter = express.Router()
-  console.log 'Auth Router configurado'
 
   authRouter.get '/', (req, res) ->
     res.json
