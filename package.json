@@ -4,7 +4,8 @@
   "description": "A aplicação teste para criar o SOA do Smart",
   "main": "app.coffee",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "coffee app.coffee"
   },
   "keywords": [
     "Node",
