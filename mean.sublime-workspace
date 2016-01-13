@@ -31,7 +31,7 @@
 			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 839,
+				"buffer_size": 883,
 				"line_ending": "Unix"
 			}
 		},
@@ -39,7 +39,87 @@
 			"file": ".gitignore",
 			"settings":
 			{
-				"buffer_size": 22,
+				"buffer_size": 38,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mean.sublime-project",
+			"settings":
+			{
+				"buffer_size": 225,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/routes/api.coffee",
+			"settings":
+			{
+				"buffer_size": 2404,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app.coffee",
+			"settings":
+			{
+				"buffer_size": 842,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gulpfile.coffee",
+			"settings":
+			{
+				"buffer_size": 742,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "console.log 2+2*8 ",
+			"file": "teste.coffee",
+			"file_size": 17,
+			"file_write_time": 130970927004762654,
+			"settings":
+			{
+				"buffer_size": 18,
+				"line_ending": "Unix",
+				"name": "console.log 2+2"
+			}
+		},
+		{
+			"contents": "assert = require('assert')\nchai = require('chai')\nconfig = require('../config')\nchai.should()\n\n\n\ndescribe 'O arquivo de configurações globais do serviço', ->\n  it 'existe e está acessível', ->\n    config.should.not.equal undefined\n    return\n  it 'contém uma string que define a conexão com o banco', ->\n    config.should.have.property('database').and.not.equal ''\n    return\n  it 'possui uma palavra chave para o token de autenticação com mais de 18 caracteres', ->\n    config.should.have.property('secret').with.length.above 18\n    return\n  return\n",
+			"file": "test/test-config.coffee",
+			"file_size": 556,
+			"file_write_time": 130970704542878119,
+			"settings":
+			{
+				"buffer_size": 550,
+				"line_ending": "Unix",
+				"name": "assert = require('assert')"
+			}
+		},
+		{
+			"file": "app/services/auth-service.coffee",
+			"settings":
+			{
+				"buffer_size": 845,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config.coffee",
+			"settings":
+			{
+				"buffer_size": 183,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/user.coffee",
+			"settings":
+			{
+				"buffer_size": 648,
 				"line_ending": "Unix"
 			}
 		}
@@ -51,7 +131,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 105.0,
+		"height": 400.0,
 		"last_filter": "",
 		"selected_items":
 		[
@@ -146,8 +226,8 @@
 	"expanded_folders":
 	[
 		"/home/mario/projetos/mean-book",
-		"/home/mario/projetos/mean-book/public/app",
-		"/home/mario/projetos/mean-book/public/app/controllers"
+		"/home/mario/projetos/mean-book/app",
+		"/home/mario/projetos/mean-book/app/models"
 	],
 	"file_history":
 	[
@@ -220,7 +300,7 @@
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -234,6 +314,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"err",
+			"gulpfile.coffee",
 			" \n",
 			"logi",
 			"transform",
@@ -261,7 +343,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -270,15 +352,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 839,
+						"buffer_size": 883,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								836,
-								836
+								472,
+								472
 							]
 						],
 						"settings":
@@ -291,17 +373,17 @@
 								"current_ext": ".json",
 								"current_syntax": "Theme - Afterglow/Prefs/Langs/npm JSON",
 								"enabled": false,
-								"last_updated": 1452525785.55
+								"last_updated": 1452600551.95
 							},
 							"syntax": "Packages/Theme - Afterglow/Prefs/Langs/npm JSON.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -310,15 +392,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 22,
+						"buffer_size": 38,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								22,
-								22
+								38,
+								38
 							]
 						],
 						"settings":
@@ -339,7 +421,359 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "mean.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 225,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								225,
+								225
+							]
+						],
+						"settings":
+						{
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".sublime-project",
+								"current_syntax": "JavaScript/JSON",
+								"enabled": false,
+								"last_updated": 1452525785.55
+							},
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/routes/api.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2404,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								742,
+								742
+							]
+						],
+						"settings":
+						{
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".coffee",
+								"current_syntax": "Better CoffeeScript/CoffeeScript",
+								"enabled": false,
+								"last_updated": 1452600551.95
+							},
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 842,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								794,
+								794
+							]
+						],
+						"settings":
+						{
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".coffee",
+								"current_syntax": "Better CoffeeScript/CoffeeScript",
+								"enabled": false,
+								"last_updated": 1452600551.95
+							},
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "gulpfile.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								742,
+								742
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".coffee",
+								"current_syntax": "Theme - Afterglow/Prefs/Langs/Gulpfile Coffee",
+								"enabled": false,
+								"last_updated": 1452600551.95
+							},
+							"syntax": "Packages/Theme - Afterglow/Prefs/Langs/Gulpfile Coffee.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "teste.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18,
+								18
+							]
+						],
+						"settings":
+						{
+							"auto_name": "console.log 2+2",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".coffee",
+								"current_syntax": "Better CoffeeScript/CoffeeScript",
+								"enabled": false,
+								"last_updated": 1452600551.95
+							},
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "test/test-config.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 550,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								550,
+								550
+							]
+						],
+						"settings":
+						{
+							"auto_name": "assert = require('assert')",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".coffee",
+								"current_syntax": "Better CoffeeScript/CoffeeScript",
+								"enabled": false,
+								"last_updated": 1452600551.95
+							},
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/services/auth-service.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 845,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								140,
+								140
+							]
+						],
+						"settings":
+						{
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".coffee",
+								"current_syntax": "Better CoffeeScript/CoffeeScript",
+								"enabled": false,
+								"last_updated": 1452600551.95
+							},
+							"open_with_edit": true,
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "config.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								183,
+								183
+							]
+						],
+						"settings":
+						{
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".coffee",
+								"current_syntax": "Better CoffeeScript/CoffeeScript",
+								"enabled": false,
+								"last_updated": 1452600551.95
+							},
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/models/user.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								176,
+								176
+							]
+						],
+						"settings":
+						{
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".coffee",
+								"current_syntax": "Better CoffeeScript/CoffeeScript",
+								"enabled": false,
+								"last_updated": 1452600551.95
+							},
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -393,6 +827,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"config",
+				"config.coffee"
+			],
+			[
+				"app",
+				"app.coffee"
+			],
 			[
 				"main",
 				"app/views/main.html"

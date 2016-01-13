@@ -1,38 +1,39 @@
-user = require '../models/user'
+User = require '../models/user'
 jwt = require 'jsonwebtoken'
 config = require '../../config'
 authService = require '../services/auth-service'
+
 
 module.exports = (app, express) ->
 	apiRouter = express.Router()
 
 	apiRouter.use (req, res, next) ->
-		console.log 'Alguma coisa aconteceu, e nós vamos ignorar'
+		console.log 'Alguma coisa aconteceu , e nós vamos ignorar'
 		next()
 
 
 	apiRouter.post '/authenticate', (req, res) ->
-    message = authService.login(req.body.username, req.body.password)
-    res.json message
+    authService.login req.body.username, req.body.password, (message)->
+      res.json message
 		
   apiRouter.get '/', (req, res) ->
-    res.json message: 'Bem vindo à nossa API!'
+    res.json message: 'Bem vindo à nossa API!!!'
 
 	apiRouter.use (req, res, next) ->
-  		console.log 'Somebody just came to our app!'
+  		console.log 'Alguém quer acessar uma sessão segura...'
   		
   		token = req.body.token or req.query.token or req.headers['x-access-token']
   		
   		if token
     		jwt.verify token, config.secret, (err, decoded) ->
-		    if err
-	        	res.json
-	        		success: false
-	        		message: 'Failed to authenticate token.'
-	      	else
-	        	req.decoded = decoded
-	        	next()
-	      	return
+		      if err
+            res.json
+              success: false
+              message: 'Failed to authenticate token.'
+          else
+            req.decoded = decoded
+            next()
+            return
   		else
     		res.status(403).send
       			success: false

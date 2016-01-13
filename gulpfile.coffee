@@ -1,18 +1,29 @@
 gulp = require 'gulp'
-istanbul = require('gulp-coffee-istanbul')
-
-# We'll use mocha here, but any test framework will work
-mocha = require('gulp-mocha')
+istanbul = require 'gulp-coffee-istanbul'
+nodemon = require 'gulp-nodemon'
+mocha = require 'gulp-mocha'
 
 jsFiles = []
 specFiles = ['test/**.coffee', 'test/**.js']
-coffeeFiles = ['api/**.coffee']
+coffeeFiles = ['app/**/**.coffee', 'app.coffee', 'config.coffee']
+
+gulp.task 'default', ->
+  nodemon(
+    script: 'app.coffee'
+    ext: 'html coffee'
+    ignore: [ 'public/**' ]
+  ).on 'restart', ->
+    gulp.start 'coverage'
 
 gulp.task 'test', ->
+  gulp.src specFiles
+    .pipe mocha reporter: 'spec'
+
+gulp.task 'coverage', ->
   gulp.src jsFiles.concat(coffeeFiles)
-    .pipe istanbul({includeUntested: true}) # Covering files
+    .pipe istanbul({includeUntested: true}) 
     .pipe istanbul.hookRequire()
     .on 'finish', ->
       gulp.src specFiles
         .pipe mocha reporter: 'spec'
-        .pipe istanbul.writeReports() # Creating the reports after tests run
+        .pipe istanbul.writeReports() 
