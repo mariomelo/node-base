@@ -1,4 +1,4 @@
 module.exports =
 	'database': 'mongodb://meanbook:facta@ds061984.mongolab.com:61984/meanbook'
-	'port': 1337 unless process.env.PORT is on
+	'port': process.env.PORT or 1337
 	'secret': 'alwayslookonthebrightsideoflife'
