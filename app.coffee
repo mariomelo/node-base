@@ -4,6 +4,7 @@ bodyParser = require 'body-parser'
 mongoose = require 'mongoose'
 morgan = require 'morgan'
 path = require 'path'
+jwt = require 'jsonwebtoken'
 
 app = express()
 
@@ -23,13 +24,12 @@ mongoose.connect config.database
 
 app.use express.static __dirname + '/public'
 
-apiRoutes = require('./app/routes/api')(app, express);
+apiRoutes = require('./app/routes/api')(express, config, jwt);
 app.use '/api', apiRoutes
-
 
 app.get '*', (req, res) ->
 	res.sendFile path.join __dirname + '/public/index.html'
 	
 app.listen config.port
 
-console.log config.port + 'is the magic port!'
+console.log 'Aplicação rodando na porta: ' + config.port

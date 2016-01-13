@@ -2,7 +2,7 @@ User = require '../models/user'
 jwt = require 'jsonwebtoken',
 config = require '../../config'
 
-module.exports =
+module.exports = 
   login: (username, password, callback) ->
     User.findOne( username: username ).select('password').exec (error, user) ->
       throw error if error
