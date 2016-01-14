@@ -12,13 +12,13 @@ gulp.task 'default', ->
     script: 'app.coffee'
     ext: 'coffee'
     ignore: [ 'public/**', 'coverage/**' ]
-  )#.on 'restart', ->
-    #gulp.start 'test'
+  ).on 'restart', ->
+    gulp.start 'test'
 
 gulp.task 'test', ->
   gulp.src specFiles
     .pipe mocha 
-      reporter: 'spec'
+      reporter: 'min'
       globals:
         assert: require('assert')
         should: require('chai').should()
@@ -30,5 +30,9 @@ gulp.task 'full-test', ->
     .pipe istanbul.hookRequire()
     .on 'finish', ->
       gulp.src specFiles
-        .pipe mocha reporter: 'spec'
+        .pipe mocha 
+          reporter: 'spec'
+          globals:
+            assert: require('assert')
+            should: require('chai').should()
         .pipe istanbul.writeReports() 
