@@ -20,7 +20,6 @@ jwt_mock =
   sign: -> 'token_fake'
 
 
-
 #Serviço sendo "enganado" com um JWT de mentira
 service = require('../app/services/auth-service')(user_mock, jwt_mock, secret: 'teste')
 
