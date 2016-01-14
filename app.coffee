@@ -5,6 +5,8 @@ mongoose = require 'mongoose'
 morgan = require 'morgan'
 path = require 'path'
 jwt = require 'jsonwebtoken'
+bcrypt = require 'bcrypt-nodejs'
+
 
 #Cria a aplicação Express e uma sub-aplicação responsável pela parte da API
 mainApp = express()
@@ -30,10 +32,19 @@ mainApp.use morgan 'dev'
 #Realiza a conexão com o Banco de Dados de acordo com a string definida no arquivo config.coffee
 mongoose.connect config.database
 
-logRoutes = require('./app/routes/log-routes')(express, config)
+#Obtém modelos
+Log = require('./app/models/log')(mongoose)
+User = require('./app/models/user')(mongoose, bcrypt)
+
+#Obtém serviços
+authService = require('./app/services/auth-service')(User, jwt, config)
+logService = require('./app/services/log-service')(Log, config)
+
+#Inicializa rotas
+logRoutes = require('./app/routes/log-routes')(express, logService)
 api.use '/', logRoutes
 
-authRoutes = require('./app/routes/auth-routes')(express, config, jwt)
+authRoutes = require('./app/routes/auth-routes')(express, authService)
 api.use '/', authRoutes
 
 userRoutes = require('./app/routes/user-routes')(express)

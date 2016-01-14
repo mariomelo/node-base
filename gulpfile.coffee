@@ -12,8 +12,8 @@ gulp.task 'default', ->
     script: 'app.coffee'
     ext: 'coffee'
     ignore: [ 'public/**', 'coverage/**' ]
-  ).on 'restart', ->
-    gulp.start 'test'
+  )#.on 'restart', ->
+    #gulp.start 'test'
 
 gulp.task 'test', ->
   gulp.src specFiles

@@ -1,6 +1,4 @@
-authService = require '../services/auth-service'
-
-module.exports = (express) ->
+module.exports = (express, authService) ->
   authRouter = express.Router()
 
   authRouter.get '/', (req, res) ->
