@@ -1,22 +1,17 @@
-#Pré condições do teste
-tokenValid = false
+fake_user = 
+  username: 'barack_obama'
+  comparePassword: (password) -> user_mock.passwordCorrect  
 
-user_mock = 
-  result: null
-  error: false
-  findOne: () -> 
-    console.log 'findOne'
-    user_mock
-  select: () -> 
-    console.log 'select'
-    user_mock
-  exec: (callback) -> 
-    callback user_mock.result
+user_mock =
+  passwordCorrect: false
+  user: fake_user
+  getPasswordByUsername: (username, callback) -> callback user_mock.user
 
 jwt_mock =
+  tokenValid: false
   verify: (token, secret, callback) ->
-    callback(null, username: "barack_obama") if tokenValid
-    callback("Token Rejeitado", null) unless tokenValid
+    callback(null, username: "barack_obama") if user_mock.tokenValid
+    callback("Token Rejeitado", null) unless user_mock.tokenValid
   sign: -> 'token_fake'
 
 
@@ -36,17 +31,33 @@ describe 'AuthService', ->
         done()
 
     it 'devem aceitar tokens válidos', (done) ->
-      tokenValid = true
+      user_mock.tokenValid = true
       service.verify 'token', (error, decoded)->
         decoded.should.have.property('username').which.equals 'barack_obama'
         done()
 
   describe 'O processo de autenticação', ->
     it 'deve barrar usuários inexistentes', (done) ->
-      user_mock.result = null
+      user_mock.user = null
       service.login 'teste', '', (result) ->
         result.success.should.be.false
+        result.message.should.contain 'Usuário não encontrado'
+        result.should.not.have.property 'token'
         done()
 
-    it 'deve barrar senhas incorretas'
-    it 'deve permitir usuários existentes com a senha correta'
+    it 'deve barrar senhas incorretas', (done)->
+      user_mock.user = fake_user
+      service.login 'teste', '', (result) ->
+        result.success.should.be.false
+        result.message.should.contain 'Senha incorreta'
+        result.should.not.have.property 'token'
+        done()
+
+    it 'deve permitir usuários existentes com a senha correta', (done) ->
+      user_mock.user = fake_user
+      user_mock.passwordCorrect = true
+      service.login 'teste', '', (result) ->
+        result.success.should.be.true
+        result.message.should.contain 'autenticado com sucesso'
+        result.should.have.property 'token'
+        done()

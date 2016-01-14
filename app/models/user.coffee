@@ -19,8 +19,15 @@ module.exports = (mongoose, bcrypt) ->
   		user.password = hash
   		next()
 
+  #Métodos de instância
   UserSchema.methods.comparePassword = (password) ->
   	user = this
   	bcrypt.compareSync password, user.password 
+
+  #Métodos estáticos
+  UserSchema.statics.getPasswordByUsername = (username, callback) ->
+    this.findOne( username: username ).select('password').exec (error, user) ->
+      throw error if error
+      callback user
 
   return mongoose.model 'User', UserSchema

@@ -1,13 +1,12 @@
 module.exports = (User, jwt, config) ->
   AuthService = 
     login: (username, password, callback) ->
-      User.findOne( username: username ).select('password').exec (error, user) ->
-        throw error if error
+      User.getPasswordByUsername username, (user) ->
         if !user
             callback success: false,
             message: 'Falha na autenticação: Usuário não encontrado'
 
-        else if user
+        else
           validPassword = user.comparePassword(password)
           if !validPassword
 
