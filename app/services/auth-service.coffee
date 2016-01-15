@@ -7,7 +7,7 @@ module.exports = (User, jwt, config) ->
             message: 'Falha na autenticação: Usuário não encontrado'
 
         else
-          validPassword = user.comparePassword(password)
+          validPassword = user.comparePassword(password or '')
           if !validPassword
 
               callback success: false,

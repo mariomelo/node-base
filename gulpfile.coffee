@@ -18,9 +18,9 @@ gulp.task 'default', ->
 gulp.task 'test', ->
   gulp.src specFiles
     .pipe mocha 
-      reporter: 'min'
+      reporter: 'spec'
       globals:
-        assert: require('assert')
+        assert: require('chai').assert
         should: require('chai').should()
       
 

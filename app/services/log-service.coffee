@@ -12,6 +12,6 @@ module.exports = (Log, config) ->
 				log.params = req.params
 
 				log.save (err) ->
-				  console.log err if err
+				  throw err if err
 
 	return LogService
