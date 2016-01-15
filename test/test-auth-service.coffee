@@ -1,9 +1,9 @@
 fake_user = 
   username: 'barack_obama'
-  comparePassword: (password) -> user_mock.passwordCorrect  
+  comparePassword: (password) -> fake_user.passwordCorrect  
+  passwordCorrect: false
 
 user_mock =
-  passwordCorrect: false
   user: fake_user
   getPasswordByUsername: (username, callback) -> callback user_mock.user
 
@@ -54,8 +54,8 @@ describe 'AuthService', ->
         done()
 
     it 'deve permitir usuários existentes com a senha correta', (done) ->
+      fake_user.passwordCorrect = true
       user_mock.user = fake_user
-      user_mock.passwordCorrect = true
       service.login 'teste', '', (result) ->
         result.success.should.be.true
         result.message.should.contain 'autenticado com sucesso'
